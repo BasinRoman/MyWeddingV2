@@ -1,4 +1,5 @@
 import './App.css'
+import {} from './icons/invite_letter.png'
 import MainGrid from './components/MainGrid';
 
 interface AppStaticComponentsProps {
@@ -13,11 +14,9 @@ const AppStaticComponents = ({ children }: AppStaticComponentsProps) => (
 
 function App() {
   return (
-    <>
       <AppStaticComponents>
         <MainGrid />
-      </AppStaticComponents>
-    </>
+      </AppStaticComponents>  
   )
 }
 

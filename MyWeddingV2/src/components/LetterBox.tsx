@@ -1,61 +1,68 @@
-import { useEffect, useRef, useState } from "react";
+//import { useEffect, useRef, useState } from "react";
+
+import romashka_margaritka from '../assets/icons/romashka_margaritka.png'
 
 export default function LetterBox() {
 
-    const envelopeRef = useRef<HTMLDivElement>(null);
-    const letterRef = useRef<HTMLDivElement>(null);
-    const [isOpen, setIsOpen] = useState(false);
-    const isClosing = useRef(false);
+    //const envelopeRef = useRef<HTMLDivElement>(null);
+    //const letterRef = useRef<HTMLDivElement>(null);
+
+
+    //const letterObj = document.querySelector(".letter");
+    //const [isOpen, setIsOpen] = useState(false);
+    //const isClosing = useRef(false);
 
     const handleOpen = () => {
-        if (envelopeRef.current && letterRef.current && !isClosing.current) {
-            envelopeRef.current.classList.add("open");
-            envelopeRef.current.classList.remove("close");
-            envelopeRef.current.style.animation = "none";
+        const envelopeObj = document.getElementById("envelope");
+        if (envelopeObj) {
+            envelopeObj.classList.add("open");
+            envelopeObj.classList.remove("close");
+            envelopeObj.style.animation = "none";
 
-            setIsOpen(true);
+            //setIsOpen(true);
         }
     };
 
     const handleClose = () => {
-        if (envelopeRef.current && letterRef.current) {
-            isClosing.current = true;
-            envelopeRef.current.classList.remove("open");
-            envelopeRef.current.classList.add("close");
-            envelopeRef.current.style.animation = "wobble 5s ease infinite";
+        const envelopeObj = document.getElementById("envelope");
+        if (envelopeObj) {
+            //isClosing.current = true;
+            envelopeObj.classList.remove("open");
+            envelopeObj.classList.add("close");
+            envelopeObj.style.animation = "wobble 5s ease infinite";
 
-            setIsOpen(false);
-            setTimeout(() => {
-                isClosing.current = false;
-            }, 100);
+            //setIsOpen(false);
+            // setTimeout(() => {
+            //     isClosing.current = false;
+            // }, 100);
         }
     };
 
-    useEffect(() => {
-        return () => {
-            if (isOpen) {
-                envelopeRef.current?.removeEventListener("click", handleOpen);
-                letterRef.current?.addEventListener("click", handleClose);
-                setIsOpen(false);
-            }
-            else {
-                envelopeRef.current?.addEventListener("click", handleOpen);
-                letterRef.current?.addEventListener("click", handleClose);
-                setIsOpen(true);
-            }
-        };
-    }, [envelopeRef, letterRef]);
+    // useEffect(() => {
+    //     return () => {
+    //         if (isOpen) {
+    //             envelopeRef.current?.removeEventListener("click", handleOpen);
+    //             letterRef.current?.addEventListener("click", handleClose);
+    //             setIsOpen(false);
+    //         }
+    //         else {
+    //             envelopeRef.current?.addEventListener("click", handleOpen);
+    //             letterRef.current?.addEventListener("click", handleClose);
+    //             setIsOpen(true);
+    //         }
+    //     };
+    // }, [envelopeRef, letterRef]);
 
     return (
         <>
-            <div ref={envelopeRef} id="envelope">
+            <div  className="envelope" id="envelope" onClick={handleOpen}>
                 <div className="front flap"></div>
                 <div className="front pocket">
-                    <img src="./src/icons/romashka_margaritka.png"
+                    <img src={romashka_margaritka}
                         alt="romashka_margaritka"
                         className="romashka_margaritka" />
                 </div>
-                <div ref={letterRef} className="letter" id="letter">
+                <div  className="letter" id="letter" onClick={handleClose}>
                 </div>
             </div>
         </>
