@@ -4,6 +4,7 @@ import LetterBox from "./LetterBox";
 import Contact from "./Contact/Contact";
 import WeddingPlan from "./WeddingPlan";
 import FAQ from "./FAQ";
+import Photos from "./Photos/Photos";
 
 export default function MainGrid() {
     return (
@@ -15,7 +16,7 @@ export default function MainGrid() {
                     <Route path='/Contact' element={<Contact />} />
                     <Route path='/Ceremony_plan' element={<WeddingPlan />} />
                     <Route path='/FAQ' element={<FAQ />} />
-                    <Route path='/Photos' element={<></>} />
+                    <Route path='/Photos' element={<Photos/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

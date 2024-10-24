@@ -555,3 +555,37 @@ li {
      transform: translateX(calc(-32px / 5.5)) rotate(calc(-10deg / 5));
    }
  }
+
+.pagination {
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+  position: relative;
+  top: 0;
+  width: 100%;
+  margin-bottom: 10px; /* Отступ снизу для разделения с изображениями */
+  z-index: 1; /* Чтобы элементы не перекрывались */
+}
+
+.images-container-photo {
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  order: 2; /* Располагается после пагинации */
+  width: 100%; /* Занимает всю ширину родителя, если нужно */
+}
+
+.image-photo {
+  width: 100%;
+  height: 20rem;
+  cursor: pointer;
+}
+
+.image-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
